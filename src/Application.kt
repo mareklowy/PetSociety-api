@@ -1,12 +1,16 @@
-package com.frangovers
+package com.frangovers.petsociety
 
-import io.ktor.application.*
-import io.ktor.response.*
-import io.ktor.request.*
-import io.ktor.routing.*
-import io.ktor.http.*
-import io.ktor.gson.*
-import io.ktor.features.*
+import com.frangovers.petsociety.API.responses.Persona
+import io.ktor.application.Application
+import io.ktor.application.call
+import io.ktor.application.install
+import io.ktor.features.ContentNegotiation
+import io.ktor.gson.gson
+import io.ktor.http.ContentType
+import io.ktor.response.respond
+import io.ktor.response.respondText
+import io.ktor.routing.get
+import io.ktor.routing.routing
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
@@ -19,12 +23,17 @@ fun Application.module(testing: Boolean = false) {
     }
 
     routing {
+
         get("/") {
             call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
         }
 
         get("/json/gson") {
             call.respond(mapOf("hello" to "world"))
+        }
+        get("/mrdka") {
+            //Persona is data class with @Expose & @SerializedName("Name")
+            call.respond(Persona("Kajul", "Alcoholism"))
         }
     }
 }
