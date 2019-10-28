@@ -34,5 +34,10 @@ dependencies {
     compile "ch.qos.logback:logback-classic:$logback_version"
     compile "io.ktor:ktor-server-core:$ktor_version"
     compile "io.ktor:ktor-gson:$ktor_version"
+
+    //MongoDB Client
+    compile 'org.litote.kmongo:kmongo:3.11.1'
+    compile 'org.litote.kmongo:kmongo-coroutine:3.11.1'
+    
     testCompile "io.ktor:ktor-server-tests:$ktor_version"
 }
