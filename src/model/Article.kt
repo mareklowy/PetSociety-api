@@ -14,7 +14,7 @@ data class Article(
     @SerializedName("category")
     @Expose
     var category: String? = null,
-    @SerializedName("cover")
+    @SerializedName("coverImage")
     @Expose
     var coverImage: String? = null,
     @SerializedName("description")
