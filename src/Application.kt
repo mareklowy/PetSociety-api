@@ -1,6 +1,5 @@
 package com.frangovers.petsociety
 
-import com.frangovers.petsociety.API.responses.Persona
 import com.frangovers.petsociety.model.Article
 import com.mongodb.MongoClientURI
 import io.ktor.application.Application
@@ -8,9 +7,7 @@ import io.ktor.application.call
 import io.ktor.application.install
 import io.ktor.features.ContentNegotiation
 import io.ktor.gson.gson
-import io.ktor.http.ContentType
 import io.ktor.response.respond
-import io.ktor.response.respondText
 import io.ktor.routing.get
 import io.ktor.routing.routing
 import org.litote.kmongo.KMongo
@@ -32,19 +29,6 @@ fun Application.module(testing: Boolean = false) {
     }
 
     routing {
-
-        get("/") {
-            call.respondText("Pet Society API", contentType = ContentType.Text.Plain)
-        }
-
-        get("/json/gson") {
-            call.respond(mapOf("hello" to "world"))
-        }
-
-        get("/mrdka") {
-            //Persona is data class with @Expose & @SerializedName("Name")
-            call.respond(Persona("Kajul", "Alcoholism"))
-        }
 
         get("/articles/all") {
             val col = database.getCollection<Article>()
